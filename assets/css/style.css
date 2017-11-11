@@ -1,9 +1,24 @@
 .jumbotron {
 	padding:10px;
-	background-color:#eac3a0;
+	background-color:transparent;
+	margin-bottom:0px;
+}
+
+.card {
+	margin-top: 10px;
 }
 
 .card-block {
 	color: black;
 	background-color:#eac3a0;
+}
+
+#page_errorCard .card-block {
+	padding-top: 10px;
+	padding-bottom:10px;
+}
+
+#page_btn_seeRecent .card-block {
+	background:transparent;
+	border:0;
 }

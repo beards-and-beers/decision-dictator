@@ -19,16 +19,27 @@
 	</div>
 
 	<div class="container">
-		<!-- Region: Submit Card -->
-		<div class="row justify-content-center">
+
+		<!-- Region: Error Card View page_errorCard_Region -->
+		<div id="page_errorCard_Region" class="row justify-content-center">
 			<div class="col-lg-4">
-				<div id="page_submitCard" class="card card-inverse card-info text-center">
+
+				<div id="page_errorCard" class="card card-info text-center">
 					<div class="card-block">
+						<p>We couldn't find the city. It might be out of our control! <br /> Try Again.</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Region: Submit Card View page_submitData_Region-->
+		<div id="page_submitData_Region" class="row justify-content-center">
+			<div class="col-lg-4">
+
+				<div class="card card-info text-center">
+					<div id="page_submitData" class="card-block">
 						<form role="form">
-				      		<div class="form-group">
-				        		<label for="input-location">What City?</label>
-				        		<input class="form-control" id="input-location" type="text">
-				      		</div>
 				      		<div class="form-group">
 				        		<label for="input-bizType">Food or Beer?</label>
 								<select class="form-control" id="input-bizType">
@@ -36,14 +47,103 @@
 								    <option>Beer</option>
 							  	</select>
 							</div>
-			              <button id="btn_submitCard" type="button" class="btn btn-primary">Submit</button>
+							<div class="form-group">
+				        		<label for="input-location">What City?</label>
+				        		<input class="form-control" id="input-location" type="text">
+				      		</div>
+			              <button id="btn_submitCard" type="button" class="btn btn-primary">Submit!</button>
 			        	</form>
 			        </div>
-				</div>	
+				</div>
+
 			</div>
 		</div>
 
-     <!-- Region: Game Content -->
+		<!-- Region: Show page_btn_seeRecent -->
+		<div id="page_btn_seeRecent" class="row justify-content-center">
+			<div class="col-lg-4">
+
+				<div class="card text-center">
+					<div class="card-block">
+						<form>
+							<button id="btn_seeRecent" type="button" class="btn btn-primary">See Most Recent</button>
+						</form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+     <!-- Region: Results List page_resultsListRegion -->
+		<div id="page_resultsListRegion" class="row justify-content-center">
+			<div class="col-lg-4">
+
+				<div class="card card-info text-center">
+					<div class="card-block">
+						<p>Your limited options.
+						<br/>We are dictators after all.</p>
+					</div>
+
+					<div id="page_resultsList" class="card-block">
+						<table class="table page_resultsTable">
+							<tbody>
+								<tr id="page_resultsList_01">
+								  <td>Business Name Here</td>
+								  <td>Type</td>
+								</tr>
+								<tr id="page_resultsList_02">
+								  <td>Business Name Here</td>
+								  <td>Type</td>
+								</tr>
+								<tr id="page_resultsList_03">
+								  <td>Business Name Here</td>
+								  <td>Type</td>
+								</tr>
+								<tr id="page_resultsList_04">
+								  <td>Business Name Here</td>
+								  <td>Type</td>
+								</tr>
+								<tr id="page_resultsList_05">
+								  <td>Business Name Here</td>
+								  <td>Type</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="card-block">
+						<form>
+							<button id="btn_submitBiz" type="button" class="btn btn-primary">Dictate Now!</button>
+						</form>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Region: The Result page_resultRegion -->
+		<div id="page_resultRegion"class="row justify-content-center">
+			<div class="col-lg-4">
+
+				<div class="card card-info text-center">
+					<div id="page_result" class="card-block">
+						<h4>Business Name Here</h4>
+						<img src="http://lorempixel.com/output/cats-q-c-300-150-5.jpg">
+						<p>Type</p>
+						<p>address</p>
+
+						<form>
+							<button id="btn_tryAgain" type="button" class="btn btn-primary">Try Again!</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
 	</div>
 </body>
 </html>
