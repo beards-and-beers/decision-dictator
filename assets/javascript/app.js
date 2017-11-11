@@ -23,9 +23,10 @@ $(document).ready(function() {
 
 
 //////// GLOBAL STUFF ///////
-	
 
-
+// grabs values from page_submitData_Region (Screen 1)	
+var user_choosedLocation;
+var user_choosedBiz;
 
 
 
@@ -57,8 +58,16 @@ $(document).ready(function() {
 				});
 			},
 
-			results_zomato: function() {
-				var queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=95008&entity_type=zone&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn;
+			results_zomato: function(location) {
+				var zomato_location = location;
+
+				// assign the entity_id associated with the zone of the city
+				if (zomato_location===1.1) {
+					zomato_location=95008;
+				};
+
+
+				var queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomato_location + "&entity_type=zone&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn;
 
 				// AJAX Call
 				$.ajax({
@@ -81,12 +90,19 @@ $(document).ready(function() {
 
 //// LISTENERS FOR page_submitData_Region //// 
 		$(document).on("click", "#btn_submitCard", function() {
-			app.results_zomato();
 
-			// if ( $(this).attr("data-value")==="1.1" && $(this).attr("data-value")==="2.1"  ) {
-			// 	app.results_zomato();
-			// };
-		
+
+			// grab the selected values from the form
+			user_choosedLocation = $('select.input-location').find(':selected').data('city');
+			var user_choosedBiz = $('select.input-bizType').find(':selected').data('biz');
+			console.log("User choosed: " + user_choosedLocation + " and " + user_choosedBiz);
+
+			// user_choosedBiz 2.1 = Food/Zomato API
+			// user_choosedLocation 1.1 = Raleigh
+
+			// the biz determines the api, the location is passed so we can change search parameters (not wired up yet)
+			if (user_choosedLocation===1.1 && user_choosedBiz===2.1)
+				app.results_zomato(user_choosedLocation);
 
 		});
 
