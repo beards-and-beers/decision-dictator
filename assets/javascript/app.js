@@ -101,7 +101,7 @@ var user_choosedBiz;
 			// user_choosedLocation 1.1 = Raleigh
 
 			// the biz determines the api, the location is passed so we can change search parameters (not wired up yet)
-			if (user_choosedLocation===1.1 && user_choosedBiz===2.1)
+			if (user_choosedBiz===2.1)
 				app.results_zomato(user_choosedLocation);
 
 		});
