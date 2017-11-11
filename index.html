@@ -3,11 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Decision Dictator</title>
-	<!-- Bootstraps compiled all inclusive CDN-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<!-- Bootstraps -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- JQUERY -->
+	<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+	<!-- Firebase -->
+<!-- 	<script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+ -->	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
 	<!-- Local Styles-->
   	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
@@ -44,15 +46,16 @@
 							<div class="form-group">
 				        		<label for="input-location">What City?</label>
 				        		<select class="form-control" id="input-location">
-								    <option>Raleigh, NC</option>
-							  	</select>
+								    <option data-value="1.1">Raleigh, NC</option>
+<!-- 								<option data-value="1.2">Somewhere else</option>
+ -->							  	</select>
 				      		</div>
 
 				      		<div class="form-group">
 				        		<label for="input-bizType">Food or Beer?</label>
 								<select class="form-control" id="input-bizType">
-								    <option>Food</option>
-<!-- 								    <option>Beer</option>
+								    <option data-value="2.1">Food</option>
+<!-- 								<option data-value="2.2">Beer</option>
  -->							  	</select>
 							</div>
 
