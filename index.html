@@ -33,7 +33,7 @@
 
 				<div id="page_errorCard" class="card card-info text-center">
 					<div class="card-block">
-						<p>We couldn't find the city. It might be out of our control! <br /> Try Again.</p>
+						<p>Hey! You need to select a location and type. Try Again.</p>
 					</div>
 				</div>
 
@@ -51,17 +51,20 @@
 							<div class="form-group">
 				        		<label for="input-location">What City?</label>
 				        		<select class="input-location form-control" name="input-location">
+				        			<option data-city="1.0">Choose location</option>
 								    <option data-city="1.1">Raleigh, NC</option>
-									<option data-city="1.2">Somewhere else</option>
+									<option data-city="1.2">Durham, NC</option>
+									<option data-city="1.3">Chapel Hill, NC</option>
 							  	</select>
 				      		</div>
 
 				      		<div class="form-group">
 				        		<label for="input-bizType">Food or Beer?</label>
 								<select class="input-bizType form-control" >
+									<option data-biz="2.0">Choose type</option>
 								    <option data-biz="2.1">Food</option>
-<!-- 								<option data-value="2.2">Beer</option>
- -->							  	</select>
+									<option data-biz="2.2">Beer</option>
+							  	</select>
 							</div>
 
 			              <button id="btn_submitCard" type="button" class="btn btn-primary">Submit!</button>
@@ -98,7 +101,7 @@
 					</div>
 
 					<div id="page_resultsList" class="card-block">
-						<table class="table page_resultsTable">
+						<table class="page_resultsTable table">
 							<tbody>
 								<tr id="page_resultsList_01">
 								  <td>Business Name Here</td>

@@ -41,20 +41,45 @@ var user_choosedBiz;
 			zomato_resultsToReturn:5,
 			zomato_data:0,
 
+			brewery_data:0,
+
 			setup: function() {
 			// hide sections of app not using
+
 			},
 
-			results_brewery: function() {
+			results_brewery: function(location) {
+				// http://api.brewerydb.com/v2/locations?key=aa416dc9ba758638ac327b58ee7ee727&locality=raleigh
 				var APIKey_brewery = "aa416dc9ba758638ac327b58ee7ee727";
-				var queryURL_brewery = "http://api.brewerydb.com/v2/?key=" + APIKey_brewery;
+				var brewery_endpoint = "locations";
+				// var brewery_variable_location = "&locality=";
+				var brewery_location_value = location;
+
+				// assign the locality, a city name
+				if (brewery_location_value===1.1) {
+					brewery_location_value="raleigh";
+				}
+				if (brewery_location_value===1.2) {
+					brewery_location_value="durham";
+				}
+				if (brewery_location_value===1.3) {
+					brewery_location_value="chapel%20hill";
+				}
+				console.log(brewery_location_value);
+
+				var queryURL_brewery = "http://api.brewerydb.com/v2/" + brewery_endpoint + "?key=" + APIKey_brewery + "&locality=" + brewery_location_value;
+				alert(queryURL_brewery);
 
 				// AJAX Call
 				$.ajax({
 					url: queryURL_brewery,
-					method: "GET"
-					}).done(function(response) {
-						console.log(queryURL_brewery);
+					method: "GET",
+					headers: {
+						"APIkey": "aa416dc9ba758638ac327b58ee7ee727"
+					}
+					}).done(function(dataBrewery) {
+						this.brewery_data = dataBrewery;
+						console.log(this.brewery_data);
 				});
 			},
 
@@ -91,18 +116,27 @@ var user_choosedBiz;
 //// LISTENERS FOR page_submitData_Region //// 
 		$(document).on("click", "#btn_submitCard", function() {
 
-
 			// grab the selected values from the form
 			user_choosedLocation = $('select.input-location').find(':selected').data('city');
 			var user_choosedBiz = $('select.input-bizType').find(':selected').data('biz');
 			console.log("User choosed: " + user_choosedLocation + " and " + user_choosedBiz);
 
+			// user_choosedBiz 2.0 = Empty - Error
 			// user_choosedBiz 2.1 = Food/Zomato API
+			// user_choosedBiz 2.2 = Beer/Brewery API
+
 			// user_choosedLocation 1.1 = Raleigh
 
 			// the biz determines the api, the location is passed so we can change search parameters (not wired up yet)
-			if (user_choosedBiz===2.1)
+			if (user_choosedBiz===2.1) {
+				console.log("zomato fired")
 				app.results_zomato(user_choosedLocation);
+			}
+
+			else if (user_choosedBiz===2.2) {
+				console.log("brewery fired")
+				app.results_brewery(user_choosedLocation);
+			};
 
 		});
 
