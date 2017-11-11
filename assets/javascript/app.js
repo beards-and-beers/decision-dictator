@@ -35,6 +35,11 @@ $(document).ready(function() {
 
 //////// METHODS ///////
 		var app = {
+			// app scope global variables
+			zomato_startAtResult:0,
+			zomato_resultsToReturn:5,
+			zomato_data:0,
+
 			setup: function() {
 			// hide sections of app not using
 			},
@@ -43,6 +48,7 @@ $(document).ready(function() {
 				var APIKey_brewery = "aa416dc9ba758638ac327b58ee7ee727";
 				var queryURL_brewery = "http://api.brewerydb.com/v2/?key=" + APIKey_brewery;
 
+				// AJAX Call
 				$.ajax({
 					url: queryURL_brewery,
 					method: "GET"
@@ -52,18 +58,18 @@ $(document).ready(function() {
 			},
 
 			results_zomato: function() {
-				var APIKey_zomato = "262a8901410f92714e29cd56d11b11bf";
-				var queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=95008&entity_type=zone&start=10&count=1";
+				var queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=95008&entity_type=zone&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn;
 
-
+				// AJAX Call
 				$.ajax({
 					url: queryURL_zomato,
 					method: "GET",
 					headers: {
 						"user-key": "262a8901410f92714e29cd56d11b11bf"
 					}
-					}).done(function(data) {
-						console.log(data);
+					}).done(function(dataZomato) {
+						this.zomato_data = dataZomato;
+						console.log(this.zomato_data);
 				});
 			}
 
