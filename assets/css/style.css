@@ -1,3 +1,9 @@
 .jumbotron {
 	padding:10px;
+	background-color:#eac3a0;
+}
+
+.card-block {
+	color: black;
+	background-color:#eac3a0;
 }
