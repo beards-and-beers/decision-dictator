@@ -83,9 +83,18 @@ $(document).ready(function() {
 		// 	});
 		// },
 
-		results_zomato: function(location) {
+		results_zomato: function(location, food) {
+			// console.log("location " + location);
+			// console.log("food " + food);
+			var queryURL_zomato;
+
+			var zomato_cuisine = food;
+			console.log(zomato_cuisine);
+			
 			var zomato_location_value = location;
 			var zomato_location_zone = 0;
+
+			// associate cuisine cateogry with value
 
 			// assign the entity_id associated with the zone of the city
 			//Raleigh
@@ -104,8 +113,23 @@ $(document).ready(function() {
 				zomato_location_zone ="subzone";
 			};
 
+			if (zomato_cuisine===2.1) {
+			// everything
+			console.log("everything fired");
+				queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomato_location_value + "&entity_type=" + zomato_location_zone + "&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn;
 
-			var queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomato_location_value + "&entity_type=" + zomato_location_zone + "&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn;
+			};
+
+			if (zomato_cuisine===2.2) {
+			// bar food
+			console.log("bar food fired");
+
+				zomato_cuisine="bar-food";
+			 	queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomato_location_value + "&entity_type=" + zomato_location_zone + "&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn + "&cuisines=" + zomato_cuisine;
+			 	console.log(queryURL_zomato);
+			}
+
+
 			console.log(queryURL_zomato);
 			// AJAX Call
 			$.ajax({
@@ -141,23 +165,21 @@ $(document).ready(function() {
 
 		// console.log("User choosed: " + user_choosedLocation + " and " + user_choosedBiz);
 
-		// user_choosedBiz 2.0 = Empty - Error
-		// user_choosedBiz 2.1 = Food/Zomato API
-		// user_choosedBiz 2.2 = Beer/Brewery API
-
-		// user_choosedLocation 1.1 = Raleigh
 
 		if (user_choosedBiz==="2.0" || user_choosedLocation==="1.0") {
 			// show error div
-			console.log("i fired");
 			$("#page_errorCard_Region").show();
 		};
 
 		
-		// the biz determines the api, the location is passed so we can change search parameters (not wired up yet)
+		// NOT SURE WHY sometime strings work ans sometimes they dont
 		if (user_choosedBiz===2.1 && user_choosedLocation!=="1.0") {
-			console.log("zomato fired")
-			app.results_zomato(user_choosedLocation);
+			app.results_zomato(user_choosedLocation, user_choosedBiz);
+		};
+
+
+		if (user_choosedBiz===2.2 && user_choosedLocation!=="1.0") {
+			app.results_zomato(user_choosedLocation, user_choosedBiz);
 		};
 
 
