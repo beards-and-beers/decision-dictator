@@ -27,6 +27,7 @@ $(document).ready(function() {
 // grabs values from page_submitData_Region (Screen 1)	
 	var user_choosedLocation;
 	var user_choosedBiz;
+	var apiResults;
 
 
 
@@ -39,7 +40,7 @@ $(document).ready(function() {
 		// app scope global variables
 		zomato_startAtResult:0,
 		zomato_resultsToReturn:5,
-		zomato_data:0,
+		
 
 		brewery_data:0,
 
@@ -139,8 +140,20 @@ $(document).ready(function() {
 					"user-key": "262a8901410f92714e29cd56d11b11bf"
 				}
 				}).done(function(dataZomato) {
-					this.zomato_data = dataZomato;
-					console.log(this.zomato_data);
+					// apiResults = dataZomato;
+					
+					// console.log(apiResults.length);
+					console.log(apiResults.restaurants.0 .restaurant.name);
+					// //info from object
+					// 	for (var i = 0; i < apiResults.length; i++) {
+					// 	var name = apiResults[i].restaurants.restaurant.name;
+						
+			 	}
+			
+				console.log(name);
+
+
+
 			});
 		}
 
@@ -182,8 +195,9 @@ $(document).ready(function() {
 			app.results_zomato(user_choosedLocation, user_choosedBiz);
 		};
 
-
-
+		
 	});
+
+
 
 });
