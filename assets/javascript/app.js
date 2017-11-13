@@ -49,41 +49,6 @@ $(document).ready(function() {
 
 		},
 
-		// results_brewery: function(location) {
-		// 	// http://api.brewerydb.com/v2/locations?key=aa416dc9ba758638ac327b58ee7ee727&locality=raleigh
-		// 	var APIKey_brewery = "aa416dc9ba758638ac327b58ee7ee727";
-		// 	var brewery_endpoint = "locations";
-		// 	// var brewery_variable_location = "&locality=";
-		// 	var brewery_location_value = location;
-
-		// 	// assign the locality, a city name
-		// 	if (brewery_location_value===1.1) {
-		// 		brewery_location_value="raleigh";
-		// 	}
-		// 	if (brewery_location_value===1.2) {
-		// 		brewery_location_value="durham";
-		// 	}
-		// 	if (brewery_location_value===1.3) {
-		// 		brewery_location_value="chapel%20hill";
-		// 	}
-		// 	console.log(brewery_location_value);
-
-		// 	var queryURL_brewery = "http://api.brewerydb.com/v2/" + brewery_endpoint + "?key=" + APIKey_brewery + "&locality=" + brewery_location_value;
-		// 	alert(queryURL_brewery);
-
-		// 	// AJAX Call
-		// 	$.ajax({
-		// 		url: queryURL_brewery,
-		// 		method: "GET",
-		// 		headers: {
-		// 			"APIkey": "aa416dc9ba758638ac327b58ee7ee727"
-		// 		}
-		// 		}).done(function(dataBrewery) {
-		// 			this.brewery_data = dataBrewery;
-		// 			console.log(this.brewery_data);
-		// 	});
-		// },
-
 		results_zomato: function(location, food) {
 			// console.log("location " + location);
 			// console.log("food " + food);
@@ -120,16 +85,6 @@ $(document).ready(function() {
 				queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomato_location_value + "&entity_type=" + zomato_location_zone + "&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn;
 
 			};
-
-			if (zomato_cuisine===2.2) {
-			// bar food
-			console.log("bar food fired");
-
-				zomato_cuisine="bar-food";
-			 	queryURL_zomato = "https://developers.zomato.com/api/v2.1/search?entity_id=" + zomato_location_value + "&entity_type=" + zomato_location_zone + "&start=" + this.zomato_startAtResult + "&count=" + this.zomato_resultsToReturn + "&cuisines=" + zomato_cuisine;
-			 	console.log(queryURL_zomato);
-			}
-
 
 			console.log(queryURL_zomato);
 			// AJAX Call
