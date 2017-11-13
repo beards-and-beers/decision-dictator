@@ -139,22 +139,35 @@ $(document).ready(function() {
 				headers: {
 					"user-key": "262a8901410f92714e29cd56d11b11bf"
 				}
-				}).done(function(dataZomato) {
-					// apiResults = dataZomato;
+				})
+
+				.done(function(dataZomato) {
+					apiResults = dataZomato;
 					
-					// console.log(apiResults.length);
-					console.log(apiResults.restaurants.0 .restaurant.name);
+					console.log(apiResults);
+					console.log(apiResults.restaurants["0"].restaurant.name);
+					console.log(apiResults.restaurants["0"].restaurant.url);
+					console.log(apiResults.restaurants["0"].restaurant.location.address)
+
+					var name = apiResults.restaurants["0"].restaurant.name;
+					var url = apiResults.restaurants["0"].restaurant.url;
+					var address = apiResults.restaurants["0"].restaurant.location.address;
 					// //info from object
 					// 	for (var i = 0; i < apiResults.length; i++) {
 					// 	var name = apiResults[i].restaurants.restaurant.name;
-						
-			 	}
+
+					//put the info into the results table
+					// $("#page_resultsList_01").append("<td>" + name + "</td>");
+					
+					// $("#results-body > tbody").append("<tr><td>" + name + "</td><td>" + url + "</td><td>" + address + "</td></tr>");
+
+			 	})
 			
-				console.log(name);
+				
 
 
 
-			});
+			
 		}
 
 	}
