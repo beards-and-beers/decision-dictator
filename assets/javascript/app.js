@@ -143,22 +143,25 @@ $(document).ready(function() {
 
 				.done(function(dataZomato) {
 					apiResults = dataZomato;
-					
+					// broken down results from API
 					console.log(apiResults);
 					console.log(apiResults.restaurants["0"].restaurant.name);
 					console.log(apiResults.restaurants["0"].restaurant.url);
 					console.log(apiResults.restaurants["0"].restaurant.location.address)
-
+					
+					// var's with specific info
 					var name = apiResults.restaurants["0"].restaurant.name;
 					var url = apiResults.restaurants["0"].restaurant.url;
 					var address = apiResults.restaurants["0"].restaurant.location.address;
-					// //info from object
+
+					
+					//info from object could run through an array
 					// 	for (var i = 0; i < apiResults.length; i++) {
 					// 	var name = apiResults[i].restaurants.restaurant.name;
 
 					//put the info into the results table
 					// $("#page_resultsList_01").append("<td>" + name + "</td>");
-					
+					//or
 					// $("#results-body > tbody").append("<tr><td>" + name + "</td><td>" + url + "</td><td>" + address + "</td></tr>");
 
 			 	})
