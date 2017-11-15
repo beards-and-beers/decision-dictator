@@ -40,14 +40,47 @@ $(document).ready(function() {
 		// app scope global variables
 		zomato_startAtResult:0,
 		zomato_resultsToReturn:5,
-		
-
-		brewery_data:0,
+	
 
 		setup: function() {
 		// hide sections of app not using
 
 		},
+
+		// results_brewery: function(location) {
+		// 	// http://api.brewerydb.com/v2/locations?key=aa416dc9ba758638ac327b58ee7ee727&locality=raleigh
+		// 	var APIKey_brewery = "aa416dc9ba758638ac327b58ee7ee727";
+		// 	var brewery_endpoint = "locations";
+		// 	// var brewery_variable_location = "&locality=";
+		// 	var brewery_location_value = location;
+
+		// 	// assign the locality, a city name
+		// 	if (brewery_location_value===1.1) {
+		// 		brewery_location_value="raleigh";
+		// 	}
+		// 	if (brewery_location_value===1.2) {
+		// 		brewery_location_value="durham";
+		// 	}
+		// 	if (brewery_location_value===1.3) {
+		// 		brewery_location_value="chapel%20hill";
+		// 	}
+		// 	console.log(brewery_location_value);
+
+		// 	var queryURL_brewery = "http://api.brewerydb.com/v2/" + brewery_endpoint + "?key=" + APIKey_brewery + "&locality=" + brewery_location_value;
+		// 	alert(queryURL_brewery);
+
+		// 	// AJAX Call
+		// 	$.ajax({
+		// 		url: queryURL_brewery,
+		// 		method: "GET",
+		// 		headers: {
+		// 			"APIkey": "aa416dc9ba758638ac327b58ee7ee727"
+		// 		}
+		// 		}).done(function(dataBrewery) {
+		// 			this.brewery_data = dataBrewery;
+		// 			console.log(this.brewery_data);
+		// 	});
+		// },
 
 		results_zomato: function(location, food) {
 			// console.log("location " + location);
@@ -86,6 +119,7 @@ $(document).ready(function() {
 
 			};
 
+
 			console.log(queryURL_zomato);
 			// AJAX Call
 			$.ajax({
@@ -99,15 +133,19 @@ $(document).ready(function() {
 				.done(function(dataZomato) {
 					apiResults = dataZomato;
 					// broken down results from API
-					console.log(apiResults);
-					console.log(apiResults.restaurants["0"].restaurant.name);
-					console.log(apiResults.restaurants["0"].restaurant.url);
-					console.log(apiResults.restaurants["0"].restaurant.location.address)
+					// console.log(apiResults);
+					// console.log(apiResults.restaurants[2].restaurant.name);
+					// console.log(apiResults.restaurants[2].restaurant.url);
+					// console.log(apiResults.restaurants[2].restaurant.location.address);
+					// console.log("The array is " + apiResults.restaurants.length);
+
+					// // console.log( "Random is " + (Math.floor(Math.random() * 6) + (-1)) );  
+
 					
-					// var's with specific info
-					var name = apiResults.restaurants["0"].restaurant.name;
-					var url = apiResults.restaurants["0"].restaurant.url;
-					var address = apiResults.restaurants["0"].restaurant.location.address;
+					// // var's with specific info
+					// var name = apiResults.restaurants[i].restaurant.name;
+					// var url = apiResults.restaurants[i].restaurant.url;
+					// var address = apiResults.restaurants[i].restaurant.location.address;
 
 					
 					//info from object could run through an array
@@ -118,6 +156,14 @@ $(document).ready(function() {
 					// $("#page_resultsList_01").append("<td>" + name + "</td>");
 					//or
 					// $("#results-body > tbody").append("<tr><td>" + name + "</td><td>" + url + "</td><td>" + address + "</td></tr>");
+
+
+					for (var i = 0; i < apiResults.restaurants.length; i++) {
+						var step1_name = apiResults.restaurants[i].restaurant.name;
+						var step1_type = apiResults.restaurants[i].restaurant.cuisines;
+
+						$("#results_body > tbody").append("<tr><td>" + step1_name + "</td><<td>" + step1_type + "</td></tr>");
+					}
 
 			 	})
 			
@@ -169,6 +215,45 @@ $(document).ready(function() {
 		
 	});
 
+//// LISTENERS FOR page_submitData_Region //// 
+	$(document).on("click", "#btn_submitBiz", function() {
 
+		// pick random number
+		var random_Number = (Math.floor(Math.random() * 6) + (-1));
+
+		// grab content
+		var final_name = apiResults.restaurants[random_Number].restaurant.name;
+		var final_type = apiResults.restaurants[random_Number].restaurant.cuisines;
+		var final_url = apiResults.restaurants[random_Number].restaurant.url;
+		var final_address = apiResults.restaurants[random_Number].restaurant.location.address;
+
+		// send to page
+		$("#page_result").html(	
+			"<h4>" + final_name + "</h4>" +
+			"<p>Type:" + final_type + "</p>" +
+			"<p><a href=" + final_url + "\' target=\'_blank\'>View Details</a></p>" +
+			"<p>Address: " + final_address + "</p>"
+			);
+
+		// <iframe
+		// frameborder=\'0\' style=\'border:0\'
+		// src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESenekQcughAYOyVVPMtujw3ETMQ9Vzg
+		// &q=Moonlight+Pizza,Raleigh+NC" allowfullscreen>
+		// </iframe>
+
+		// use google api
+		// var apiKey_google = AIzaSyCESenekQcughAYOyVVPMtujw3ETMQ9Vzg;
+
+		// replace the spaces in final_address with %20
+
+		// write the google map to the page
+		// $("#page_result").html(	
+		// 	"frameborder=\'0\' style=\'border:0\' src=" + 
+		// 	"https://www.google.com/maps/embed/v1/place?" + apiKey_google + "&q=" +
+		// 	theformattedaddress + "\' allowscreen"
+
+		// 	);
+
+	});
 
 });
