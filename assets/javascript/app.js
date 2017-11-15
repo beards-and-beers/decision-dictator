@@ -8,26 +8,29 @@ $(document).ready(function() {
 
 //////// FIREBASE ///////
 // <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
-// <script>
-//   // Initialize Firebase
-//   var config = {
-//     apiKey: "AIzaSyCLL3aCBdebJC_74YWY04BLw48vJPBL1kM",
-//     authDomain: "decision-dictator.firebaseapp.com",
-//     databaseURL: "https://decision-dictator.firebaseio.com",
-//     projectId: "decision-dictator",
-//     storageBucket: "",
-//     messagingSenderId: "1029892439948"
-//   };
-//   firebase.initializeApp(config);
-// </script>
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCLL3aCBdebJC_74YWY04BLw48vJPBL1kM",
+    authDomain: "decision-dictator.firebaseapp.com",
+    databaseURL: "https://decision-dictator.firebaseio.com",
+    projectId: "decision-dictator",
+    storageBucket: "",
+    messagingSenderId: "1029892439948"
+  };
+  firebase.initializeApp(config);
+
 
 
 //////// GLOBAL STUFF ///////
 
 // grabs values from page_submitData_Region (Screen 1)	
+	var database = firebase.database();
 	var user_choosedLocation;
 	var user_choosedBiz;
 	var apiResults;
+
+
 
 
 
@@ -43,7 +46,9 @@ $(document).ready(function() {
 	
 
 		setup: function() {
-		// hide sections of app not using
+		//hide unused panels on startup
+		$("#page_resultsListRegion").hide();
+		$("#page_resultRegion").hide();
 
 		},
 
@@ -186,6 +191,12 @@ $(document).ready(function() {
 		// hide error div if it is currently open
 		$("#page_errorCard_Region").hide();
 
+		//show results panels
+		$("#page_resultsListRegion").show();
+		$("#page_resultRegion").show();
+		//hide inputs form
+		$("#page_submitData_Region").hide();
+
 		// grab the selected values from the form
 		user_choosedLocation = $('select.input-location').find(':selected').data('city');
 		user_choosedBiz = $('select.input-bizType').find(':selected').data('biz');
@@ -218,6 +229,11 @@ $(document).ready(function() {
 //// LISTENERS FOR page_submitData_Region //// 
 	$(document).on("click", "#btn_submitBiz", function() {
 
+		//hide results region
+			$("#page_resultsListRegion").hide();
+			$("#page_btn_seeRecent").hide();
+
+
 		// pick random number
 		var random_Number = (Math.floor(Math.random() * 6) + (-1));
 
@@ -226,6 +242,14 @@ $(document).ready(function() {
 		var final_type = apiResults.restaurants[random_Number].restaurant.cuisines;
 		var final_url = apiResults.restaurants[random_Number].restaurant.url;
 		var final_address = apiResults.restaurants[random_Number].restaurant.location.address;
+
+		database.ref().push({
+			final_name,
+			final_type,
+			final_url,
+			final_address
+
+		});
 
 		// send to page
 		$("#page_result").html(	
