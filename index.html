@@ -339,15 +339,28 @@
 		</div>
 
 		<!-- Region: Show page_btn_seeRecent -->
-		<div id="page_btn_seeRecent" class="row justify-content-center">
+		<div id="page_recentResultsListRegion" class="row justify-content-center">
 			<div class="col-md-7">
 
 				<div class="card text-center">
 					<div class="card-block">
 						<form>
-							<button id="btn_seeRecent" type="button" class="btn btn-primary">See Most Recent</button>
+							<button id="btn_seeRecent" type="button" class="btn btn-primary">See Recent Dictates</button>
+						</form>
+						<form>
+							<button id="btn_hideRecent" type="button" class="btn btn-primary">Hide</button>
 						</form>
 					</div>
+
+					<div id="page_recentResultsList" class="card-block">
+						<table class="page_recentResultsLisTable table" id="recentResultsList_body">
+							<tbody>
+<!-- 							append rows here
+ -->	
+							</tbody>
+						</table>
+					</div>
+
 				</div>
 			</div>
 
@@ -373,7 +386,7 @@
 					</div>
 					<div class="card-block">
 						<form>
-							<button id="btn_submitBiz" type="button" class="btn btn-primary">Dictate Now!</button>
+							<button id="btn_dictateNow" type="button" class="btn btn-primary">Dictate Now!</button>
 						</form>
 					</div>
 
@@ -392,11 +405,11 @@
 					</div>
 					<div id="page_googleMaps" class="card-block">
 					<!-- this is where we load google maps in an iframe  -->
-						<iframe
+	<!-- 					<iframe
 						frameborder="0" style="border:0"
 						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESenekQcughAYOyVVPMtujw3ETMQ9Vzg
 						&q=Moonlight+Pizza,Raleigh+NC" allowfullscreen>
-						</iframe>
+						</iframe> -->
 					</div>
 					<div id="page_btn_tryAgain" class="card-block">
 						<form>
