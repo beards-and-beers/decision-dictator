@@ -41,7 +41,7 @@ $(document).ready(function() {
 //////// METHODS ///////
 	var app = {
 		// app scope global variables
-		zomato_startAtResult:0,
+		zomato_startAtResult: (Math.floor(Math.random() * 20) + (-1)),
 		zomato_resultsToReturn:5,
 	
 
@@ -51,6 +51,7 @@ $(document).ready(function() {
 		$("#page_resultRegion").hide();
 
 		},
+
 
 		// results_brewery: function(location) {
 		// 	// http://api.brewerydb.com/v2/locations?key=aa416dc9ba758638ac327b58ee7ee727&locality=raleigh
@@ -235,7 +236,7 @@ $(document).ready(function() {
 
 
 		// pick random number
-		var random_Number = (Math.floor(Math.random() * 6) + (-1));
+		var random_Number = (Math.floor(Math.random() * 30) + (-1));
 
 		// grab content
 		var final_name = apiResults.restaurants[random_Number].restaurant.name;
@@ -278,6 +279,31 @@ $(document).ready(function() {
 
 		// 	);
 
+	});
+
+		$(document).on("click", "#btn_seeRecent", function() {
+
+			$("#page_resultsListRegion").show();
+
+			// database.ref().on("child_added", function(snapshot) {
+			// 	console.log(snapshot.val().final_name);
+			// 	console.log(snapshot.val().final_type);
+			// 	});
+
+			database.ref().orderByChild("timestamp").limitToLast(5).on("child_added", function(snapshot){
+				console.log(snapshot.val().final_name);
+				console.log(snapshot.val().final_type);
+
+				var pulled_name = (snapshot.val().final_name);
+				var pulled_type = (snapshot.val().final_type);
+
+
+				$("#results_body > tbody").prepend("<tr><td>" + pulled_name + "</td><<td>" + pulled_type + "</td></tr>");
+			})
+		});
+
+	$(document).on("click", "#btn_tryAgain", function() {
+		
 	});
 
 });
