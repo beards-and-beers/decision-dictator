@@ -106,7 +106,7 @@ $(document).ready(function() {
 					// console.log(apiResults.results_found);
 
 					// clear anything in the display
-					$("#results_body > tbody").html();
+					$("#results_body > tbody").html(" ");
 
 					for (var i = 0; i < apiResults.restaurants.length; i++) {
 						var step1_name = apiResults.restaurants[i].restaurant.name;
