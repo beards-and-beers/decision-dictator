@@ -128,9 +128,13 @@ $(document).ready(function() {
 // $("#page_errorCard_Region").show(); // ERROR CARD
 ////// RUN APP //////
 	app.setup();
+		// show divs
+		$("#page_recentResultsListRegion").show();
+		$("#btn_submitCard").show();
 		// hide divs
 		$("#page_errorCard_Region").hide();
 		$("#btn_hideRecent").hide();
+
 
 
 
@@ -142,6 +146,12 @@ $(document).ready(function() {
 
 		//show results list region
 		$("#page_resultsListRegion").show();
+
+		//hide view recent area
+		$("#page_recentResultsListRegion").hide();
+
+		//hide the submit button
+		$("#btn_submitCard").hide();
 
 		// grab the selected values from the form
 		user_choosedLocation = $('select.input-location').find(':selected').data('city');
@@ -267,6 +277,8 @@ $(document).ready(function() {
 
 
 	$(document).on("click", "#btn_tryAgain", function() {
+		$("#page_recentResultsListRegion").show();
+		$("#btn_submitCard").show();
 		app.setup();
 	});
 
