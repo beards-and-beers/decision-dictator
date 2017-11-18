@@ -43,14 +43,14 @@ $(document).ready(function() {
 	var app = {
 		// app scope global variables
 
-		zomato_startAtResult: (Math.floor(Math.random() * 20) + (0)),
+		zomato_startAtResult: (Math.floor(Math.random() * 100) + (0)),
 		zomato_resultsToReturn:5,
 	
 
 		setup: function() {
 		//hide unused panels on startup
-		// $("#page_resultsListRegion").hide();
-		// $("#page_resultRegion").hide();
+		$("#page_resultsListRegion").hide();
+		$("#page_resultRegion").hide();
 
 		},
 
@@ -132,11 +132,16 @@ $(document).ready(function() {
 		$("#page_errorCard_Region").hide();
 		$("#btn_hideRecent").hide();
 
+
+
+
 //// LISTENERS FOR page_submitData_Region //// 
 	$(document).on("click", "#btn_submitCard", function() {
 		// hide error div if it is currently open
 		$("#page_errorCard_Region").hide();
 
+		//show results list region
+		$("#page_resultsListRegion").show();
 
 		// grab the selected values from the form
 		user_choosedLocation = $('select.input-location').find(':selected').data('city');
@@ -151,6 +156,8 @@ $(document).ready(function() {
 		if (user_choosedBiz==="2.0" || user_choosedLocation==="1.0") {
 			// show error div
 			$("#page_errorCard_Region").show();
+			$("#page_resultsListRegion").hide();
+
 		};
 
 		
@@ -170,7 +177,7 @@ $(document).ready(function() {
 	// VIEW recent results listener
 	$(document).on("click", "#btn_seeRecent", function() {
 		// show region
-		$("#page_resultsListRegion").show();
+		$("#page_resultsListRegion").hide();
 		// hode show button
 		$(this).hide();
 		// show the hide button
@@ -183,7 +190,7 @@ $(document).ready(function() {
 		var pulled_name = (snapshot.val().final_name);
 		var pulled_type = (snapshot.val().final_type);
 
-		// display on page
+		// display on page 
 		$("#recentResultsList_body > tbody").prepend("<tr><td>" + pulled_name + "</td><<td>" + pulled_type + "</td></tr>");
 
 		})
@@ -197,7 +204,7 @@ $(document).ready(function() {
 		$(this).hide();
 		// show the show button
 		$("#btn_seeRecent").show(); 	
-		// clear results
+		// clear results 
 		$("#recentResultsList_body > tbody").html("");
 
 	});
@@ -207,9 +214,11 @@ $(document).ready(function() {
 
 
 		//hide results region
-			// $("#page_resultsListRegion").hide();
-			// $("#page_btn_seeRecent").hide();
+			$("#page_resultsListRegion").hide();
+			$("#page_btn_seeRecent").hide();
 
+		//show page result region
+			$("#page_resultRegion").show();
 
 		// pick random number
 		var random_Number = (Math.floor(Math.random() * 5) + (0));
@@ -236,7 +245,7 @@ $(document).ready(function() {
 		var api_url_google =  "https://www.google.com/maps/embed/v1/place?" + apiKey_google + "&q=" + final_address_machine;
 		console.log(api_url_google);
 
-		// send to page
+		// send to page 
 		$("#page_result").html(	
 			"<h4>" + final_name + "</h4>" +
 			"<p>" + final_type + "</p>" +
@@ -258,7 +267,7 @@ $(document).ready(function() {
 
 
 	$(document).on("click", "#btn_tryAgain", function() {
-		
+		app.setup();
 	});
 
 });
