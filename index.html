@@ -342,7 +342,7 @@
 		<div id="page_recentResultsListRegion" class="row justify-content-center">
 			<div class="col-md-7">
 
-				<div class="card text-center">
+				<div class="recentResultsListCard card text-center" style="background-color:transparent">
 					<div class="card-block">
 						<form>
 							<button id="btn_seeRecent" type="button" class="btn btn-primary">See Recent Dictates</button>
@@ -371,12 +371,12 @@
 			<div class="col-md-7">
 
 				<div class="card card-info text-center">
-					<div class="card-block">
-						<p>Your limited options.
-						<br/>We are dictators after all.</p>
+					<div class="card-block" style="padding-bottom:5px" >
+						<p style="margin-bottom:0px">Your limited options.
+						We are dictators after all.</p>
 					</div>
 
-					<div id="page_resultsList" class="card-block">
+					<div id="page_resultsList" class="card-block" style="padding-bottom:0px">
 						<table class="page_resultsTable table" id="results_body">
 							<tbody>
 <!-- 							append rows here
@@ -403,14 +403,9 @@
 					<div id="page_result" class="card-block">
 					<!-- this is where we print the choice  -->
 					</div>
-					<div id="page_googleMaps" class="card-block">
-					<!-- this is where we load google maps in an iframe  -->
-	<!-- 					<iframe
-						frameborder="0" style="border:0"
-						src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCESenekQcughAYOyVVPMtujw3ETMQ9Vzg
-						&q=Moonlight+Pizza,Raleigh+NC" allowfullscreen>
-						</iframe> -->
-					</div>
+<!-- 					<div id="page_googleMaps" class="card-block">
+
+					</div> -->
 					<div id="page_btn_tryAgain" class="card-block">
 						<form>
 							<button id="btn_tryAgain" type="button" class="btn btn-primary">Try Again!</button>

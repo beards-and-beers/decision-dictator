@@ -11,6 +11,11 @@ body {
 
 }
 
+a {
+	color:#f2f1dd;
+	text-decoration:underline;
+}
+
 
 .jumbotron {
 	padding:10px;
@@ -26,10 +31,10 @@ body {
 	border:0;
 }
 
-.card-block {
-	
-
+.recentResultsListCard .card-block {
+	background-color:transparent;
 }
+
 
 #page_errorCard .card-block {
 	padding-top: 10px;
@@ -39,6 +44,10 @@ body {
 #page_btn_seeRecent .card-block {
 	background:transparent;
 	border:0;
+}
+
+#page_resultsListRegion  p {
+	margin-bottom:0px;
 }
 
 /*SVG STUFF*/
