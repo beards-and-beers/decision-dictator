@@ -1,5 +1,6 @@
 
 // APP STRUCTURE
+// Scotts last minute update
 
 //CODE
 //
@@ -134,6 +135,7 @@ $(document).ready(function() {
 		// hide divs
 		$("#page_errorCard_Region").hide();
 		$("#btn_hideRecent").hide();
+		// $("#recentResultsList_body").html(" ");
 
 
 
@@ -167,6 +169,7 @@ $(document).ready(function() {
 			// show error div
 			$("#page_errorCard_Region").show();
 			$("#page_resultsListRegion").hide();
+			$("#page_resultRegion").show();
 
 		};
 
@@ -215,7 +218,8 @@ $(document).ready(function() {
 		// show the show button
 		$("#btn_seeRecent").show(); 	
 		// clear results 
-		$("#recentResultsList_body > tbody").html("");
+		$("#recentResultsList_body > tbody").html(" ");
+
 
 	});
 
@@ -280,6 +284,8 @@ $(document).ready(function() {
 		$("#page_recentResultsListRegion").show();
 		$("#btn_submitCard").show();
 		app.setup();
+		// $("#recentResultsList_body > tbody").html(" ");
+
 	});
 
 });
