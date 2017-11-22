@@ -11,7 +11,7 @@ body {
 
 }
 
-a {
+a, a:link, a:visited, a:hover, a:active  {
 	color:#f2f1dd;
 	text-decoration:underline;
 }
@@ -31,8 +31,9 @@ a {
 	border:0;
 }
 
-.recentResultsListCard .card-block {
+#page_recentResultsList_region .card-block {
 	background-color:transparent;
+	color: #f2f1dd;
 }
 
 
@@ -41,13 +42,41 @@ a {
 	padding-bottom:10px;
 }
 
-#page_btn_seeRecent .card-block {
-	background:transparent;
-	border:0;
+#page_errorCard > p {
+	margin:0px;
+	padding:5px;
+	background-color: black;
 }
 
-#page_resultsListRegion  p {
-	margin-bottom:0px;
+#page_submitData_Region select.form-control {
+	width:100%;
+}
+
+#page_recentBtns {
+	background-color:transparent;
+}
+
+#page_resultsList_info > p {
+	padding-bottom:0px;
+	margin:0px;
+}
+
+#page_resultsList_table {
+	padding-bottom:0px;
+}
+
+#btn_dictateNow_container {
+	padding-top:0px;
+}
+
+#page_resultsList_loading svg {
+	width:70%;
+	height:70%;
+}
+
+#page_selectedResult p {
+	margin-bottom:.5rem; 
+
 }
 
 /*SVG STUFF*/
